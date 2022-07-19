@@ -2,8 +2,9 @@ import pygame
 from settings import *
 
 class Tile(pygame.sprite.Sprite):
-	def __init__(self,pos,groups):
+	def __init__(self,pos,groups,sprite_type,surface = pygame.Surface((tile_size,tile_size))):
 		super().__init__(groups)
-		self.image = pygame.image.load('graphics/ob_frogs.png').convert_alpha()
+		self.sprite_type = sprite_type
+		self.image = surface
 		self.rect = self.image.get_rect(topleft = pos)
 		self.hitbox = self.rect.inflate(-6,-26)

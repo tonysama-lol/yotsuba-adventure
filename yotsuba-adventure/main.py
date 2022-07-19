@@ -9,7 +9,7 @@ class Game:
 		  
 		# general setup
 		os.environ['SDL_VIDEO_CENTERED'] = '1' 
-		pygame.init()
+		pygame.init()								
 		pygame.mixer.init()
 		fullscreen = pygame.display.Info()
 		

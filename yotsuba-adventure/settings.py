@@ -7,6 +7,11 @@ TILESIZE = 64
 #color set
 green = (119,198,110)
 
+#tile set
+vertical_tile_number = 50
+horizontal_tile_number = 50
+tile_size = 64
+
 WORLD_MAP = [
 ['x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'],
 ['x',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x'],
