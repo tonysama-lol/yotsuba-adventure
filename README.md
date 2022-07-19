@@ -1,2 +1,2 @@
 # yotsuba-adventure
-# compile main.py to run game
+compile main.py to run game
