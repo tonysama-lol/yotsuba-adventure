@@ -15,7 +15,7 @@ class Game:
 		
 		pygame.mixer.set_num_channels(10)
 		screen_w, screen_h = fullscreen.current_w, fullscreen.current_h
-		self.screen = pygame.display.set_mode((screen_w, screen_h))
+		self.screen = pygame.display.set_mode((1500, 1000))
 		pygame.display.set_caption('Yotsuba')
 		self.clock = pygame.time.Clock()
 

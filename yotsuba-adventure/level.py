@@ -42,15 +42,18 @@ class Level:
 							random_grass_img = choice(graphics['grass'])
 							Tile((x,y), [self.visible_sprites, self.obstacle_sprites], 'grass',random_grass_img)
 						if style == 'object':
-							surface = graphics['objects'][int(col)]
-							Tile((x,y), [self.visible_sprites,self.obstacle_sprites], 'object', surface)
+							if col in graphics['objects']:
+								surface = graphics['objects'][int(col)]
+								Tile((x,y), [self.visible_sprites,self.obstacle_sprites], 'object', surface)
+							else: 
+								pass	
 					
 		self.player = Player(playerPos,[self.visible_sprites],self.obstacle_sprites)
 	def run(self):
 		# update and draw the game
 		self.visible_sprites.custom_draw(self.player)
 		self.visible_sprites.update()
-		debug(self.player.direction)
+		debug(self.player.status)
 		
 class YSortCameraGroup(pygame.sprite.Group):
 	def __init__(self):
