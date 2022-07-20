@@ -6,10 +6,10 @@ class Player(pygame.sprite.Sprite):
 		super().__init__(groups)
 		self.image = pygame.image.load('graphics/player_Yotsuba.png').convert_alpha()
 		self.rect = self.image.get_rect(topleft = pos)
-		self.hitbox = self.rect.inflate(-6,-2)
+		self.hitbox = self.rect.inflate(-2,-4)
 
 		self.direction = pygame.math.Vector2()
-		self.speed = 10
+		self.speed = 9.5
 
 		self.obstacle_sprites = obstacle_sprites
 

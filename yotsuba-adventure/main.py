@@ -2,7 +2,7 @@ import pygame, sys, os
 from settings import *
 from level import Level
 
-main_music = pygame.mixer.Sound("main_theme.mp3")
+main_music = pygame.mixer.Sound('audio/main_theme.wav')
 
 class Game:
 	def __init__(self):
@@ -22,7 +22,7 @@ class Game:
 		self.level = Level()
 	
 	def run(self):
-		pygame.mixer.Sound.play(main_music)
+		pygame.mixer.Sound.play(main_music,-1,-1,2000)
 		while True:
 			keys = pygame.key.get_pressed()
 			for event in pygame.event.get():
@@ -33,7 +33,7 @@ class Game:
 					if event.key == pygame.K_ESCAPE:
 						pygame.quit()
 						sys.exit()
-			self.screen.fill(green)
+			self.screen.fill(blue)
 			self.level.run()
 			pygame.display.update()
 			self.clock.tick(FPS)

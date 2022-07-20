@@ -1,4 +1,5 @@
 import pygame 
+from random import choice
 from settings import *
 from tile import Tile
 from player import Player
@@ -20,9 +21,15 @@ class Level:
 
 	def create_map(self):
 		layouts = {
-			'boundary': import_csv_layout('graphics/level/level_main/level_main.csv')
-			
+			'boundary': import_csv_layout('mapSetUp/level_main.csv'),
+			'grass': import_csv_layout('mapSetUp/map_Grass.csv'),
+			'object': import_csv_layout('mapSetUp/map_Objects.csv')
 		}
+		graphics = {
+			'grass': import_folder('graphics/grass'),
+			'objects': import_folder('graphics/objects')
+		}
+		
 		for style,layout in layouts.items():
 			for row_index,row in enumerate(layout):
 				for col_index, col in enumerate(row):
@@ -31,8 +38,14 @@ class Level:
 						y = row_index * TILESIZE
 						if style == 'boundary':
 							Tile((x,y),[self.visible_sprites,self.obstacle_sprites],'invisible')
+						if style == 'grass':
+							random_grass_img = choice(graphics['grass'])
+							Tile((x,y), [self.visible_sprites, self.obstacle_sprites], 'grass',random_grass_img)
+						if style == 'object':
+							surface = graphics['objects'][int(col)]
+							Tile((x,y), [self.visible_sprites,self.obstacle_sprites], 'object', surface)
 					
-		self.player = Player((1600,1600),[self.visible_sprites],self.obstacle_sprites)
+		self.player = Player(playerPos,[self.visible_sprites],self.obstacle_sprites)
 	def run(self):
 		# update and draw the game
 		self.visible_sprites.custom_draw(self.player)
@@ -50,7 +63,7 @@ class YSortCameraGroup(pygame.sprite.Group):
 		self.offset = pygame.math.Vector2()
 
 		#create the floor
-		self.floor_surf = pygame.image.load('graphics/level/level_main/level_main.png').convert()
+		self.floor_surf = pygame.image.load('graphics/tileMap/level_main.png').convert()
 		self.floor_rect = self.floor_surf.get_rect(topleft = (0,0))
 		
 	def custom_draw(self,player):
