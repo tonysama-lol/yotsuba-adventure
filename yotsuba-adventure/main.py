@@ -13,6 +13,8 @@ class Game:
 		pygame.mixer.init()
 		fullscreen = pygame.display.Info()
 		
+		logo = pygame.image.load('yotsuba_image_title.png')
+		pygame.display.set_icon(logo)
 		pygame.mixer.set_num_channels(10)
 		screen_w, screen_h = fullscreen.current_w, fullscreen.current_h
 		self.screen = pygame.display.set_mode((1500, 1000))
